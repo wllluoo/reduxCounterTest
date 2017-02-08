@@ -7,27 +7,27 @@
  	users:[],
  	error:null
  };
-const reducer=(initialState=0,action)=>{
+const reducer=(state=initialState,action)=>{
 		if(action.type=='SETNAME')
 		{
-			initialState={...initialState,name:action.name};
+			state={...state,name:action.name};
 		}
 		else if(action.type=='WRONG')
 		{
 			throw new Error('AAAAA!!!!!');
 		}
-		return initialState;
+		return state;
 }
 
-const error=(store) => (next) => (action) =>{
-	try{
-		next(action)
-	}catch(e){
-		console.info('wrong!',e);
-	}
-}
+// const error=(store) => (next) => (action) =>{
+// 	try{
+// 		next(action)
+// 	}catch(e){
+// 		console.info('wrong!',e);
+// 	}
+// }
 
-const middleware=applyMiddleware(thunk(),error);
+const middleware=applyMiddleware(thunk,logger());
 
 const store = createStore(reducer,1,middleware);
 
