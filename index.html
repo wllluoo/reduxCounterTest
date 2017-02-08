@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Redux Counter Example</title>
+    <!-- <script type="text/javascript" src='index.js'></script> -->
+    <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+  </head>
+  <body>
+    <div id="value"></div>
+    1111
+  </body>
+  <script src="bundle.js"></script>
+  <script type="text/javascript">
+     function counter(state, action) {
+        if (typeof state === 'undefined') {
+          return 10
+        }
+        switch (action.type) {
+          case 'INCREMENT':
+            return state + 1
+          case 'DECREMENT':
+            return state - 1
+          default:
+            return state
+        }
+      }
+
+      var store = Redux.createStore(counter)
+      var valueEl = document.getElementById('value')
+
+      function render() {
+        valueEl.innerHTML = store.getState().toString()
+        console.info(store.getState().toString());
+      }
+
+      render();
+       store.subscribe(render);
+       store.dispatch({ type: 'INCREMENT' })
+       store.dispatch({ type: 'INCREMENT' })
+       store.dispatch({ type: 'INCREMENT' })
+  </script>
+</html>
