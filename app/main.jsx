@@ -10,7 +10,7 @@
 const reducer=(state=initialState,action)=>{
 		if(action.type=='SETNAME')
 		{
-			state={...state,name:action.name};
+			state={...state,name:action.name}; //修改state
 		}
 		else if(action.type=='WRONG')
 		{
@@ -27,13 +27,13 @@ const reducer=(state=initialState,action)=>{
 // 	}
 // }
 
-const middleware=applyMiddleware(thunk,logger());
+// const middleware=applyMiddleware(thunk,logger());
 
-const store = createStore(reducer,1,middleware);
+// const store = createStore(reducer,1,middleware);
 
-store.subscribe(()=>{
-	// console.info('state:',store.getState());
-})
-store.dispatch({ type: 'SETNAME' ,name:'zhong'})
-// store.dispatch({ type: 'WRONG' ,name:'wrong'})
-store.dispatch({ type: 'SETNAME' ,name:'peipei'})
+// store.subscribe(()=>{
+// 	// console.info('state:',store.getState());
+// })
+// store.dispatch({ type: 'SETNAME' ,name:'zhong'})
+// // store.dispatch({ type: 'WRONG' ,name:'wrong'})
+// store.dispatch({ type: 'SETNAME' ,name:'peipei'})
